@@ -94,7 +94,8 @@ namespace Lab02
                 $"HP: {charactor.Health.Value} / {charactor.Health.Max}, {CalculatePercent(charactor.Health)}%\n" +
                 $"Stamina: {charactor.Stamina.Value} / {charactor.Stamina.Max}, {CalculatePercent(charactor.Stamina)}%\n" +
                 $"Level: {charactor.Level}\n" +
-                $"Rank: {charactor.Rank}\n");
+                $"Rank: {charactor.Rank}\n" +
+                (charactor.IsAlive ? "Alive" : "Die") + "\n");
         }
     }
 
@@ -114,6 +115,7 @@ namespace Lab02
         public float AttackPower = 10f;
         public int Level = 1;
         public char Rank = 'F';
+        public bool IsAlive => Health.Value > 0;
 
         public CharactorStatus(string name, CharactorType type, RangedFloat health, RangedFloat stamina, float attackPower, int level, char rank)
         {
