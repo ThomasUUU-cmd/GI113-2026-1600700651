@@ -51,18 +51,18 @@ namespace Lab02
 
             var player = new CharactorStatus("Thomas", CharactorStatus.CharactorType.Player,
                 new RangedFloat(835f, 0f, 835f), new RangedFloat(50f, 0f, 50f),
-                100f, 1, 'F');
+                100f, 1, 'F', 0.0f);
 
             allCharactor.Add(player);
             allCharactor.Add(new CharactorStatus("Skeleton", CharactorStatus.CharactorType.Enemy,
                 new RangedFloat(200f, 0f, 200f), new RangedFloat(100f, 0f, 100f),
-                5f, 2, 'E'));
+                5f, 2, 'E', 1.0f));
             allCharactor.Add(new CharactorStatus("Slime", CharactorStatus.CharactorType.Enemy,
                 new RangedFloat(157f, 0f, 157f), new RangedFloat(100f, 0f, 100f),
-                15f, 2, 'E'));
+                15f, 2, 'E', 2.0f));
             allCharactor.Add(new CharactorStatus("Devil", CharactorStatus.CharactorType.Boss,
                 new RangedFloat(250f, 0f, 250f), new RangedFloat(250f, 0f, 250f),
-                80f, 2, 'D'));
+                80f, 2, 'D', 10.5f));
 
             Console.WriteLine();
             Console.WriteLine("===== ALL CHARACTOR STATUS: INITIAL =====");
@@ -85,7 +85,7 @@ namespace Lab02
         static int CalculatePercent(RangedFloat input) => (int)(input.Value * 100 / input.Max);
         static float GetAttackAmount(CharactorStatus attacker) // method สำหรับคำนวณหาดาเมจที่คาแรคเตอร์นั้นๆควรจะสามารถทำได้
         {
-            return (attacker.Stamina.Value / 100) * (float)attacker.Level * attacker.AttackPower;
+            return (float)((attacker.Stamina.Value / 100) * (float)attacker.Level * attacker.AttackPower);
         }
         static void WriteStatus(CharactorStatus charactor) // method สำหรับการพิมพ์ status
         {
@@ -95,6 +95,7 @@ namespace Lab02
                 $"Stamina: {charactor.Stamina.Value} / {charactor.Stamina.Max}, {CalculatePercent(charactor.Stamina)}%\n" +
                 $"Level: {charactor.Level}\n" +
                 $"Rank: {charactor.Rank}\n" +
+                $"EXP: {charactor.Exp}\n" +
                 (charactor.IsAlive ? "Alive" : "Die") + "\n");
         }
     }
@@ -112,12 +113,13 @@ namespace Lab02
         public CharactorType Type = CharactorType.Player;
         public RangedFloat Health = new RangedFloat(100f, 0f, 100f);
         public RangedFloat Stamina = new RangedFloat(100f, 0f, 100f);
-        public float AttackPower = 10f;
+        public double AttackPower = 10f;
         public int Level = 1;
         public char Rank = 'F';
+        public float Exp = 0f;
         public bool IsAlive => Health.Value > 0;
 
-        public CharactorStatus(string name, CharactorType type, RangedFloat health, RangedFloat stamina, float attackPower, int level, char rank)
+        public CharactorStatus(string name, CharactorType type, RangedFloat health, RangedFloat stamina, float attackPower, int level, char rank, float exp)
         {
             Name = name;
             Type = type;
@@ -126,6 +128,7 @@ namespace Lab02
             AttackPower = attackPower;
             Level = level;
             Rank = rank;
+            Exp = exp;
         }
 
     }
