@@ -22,7 +22,6 @@ namespace Lab05
             bool slotStackValid = int.TryParse(Console.ReadLine(), out int slotStack);
             Console.Write("Slot Stack Size: ");
             bool slotStackSizeValid = int.TryParse(Console.ReadLine(), out int slotStackSize);
-            Console.Write("Monster HP: ");
             Console.Write("Slot 2 Index: ");
             bool slot2IndexValid = int.TryParse(Console.ReadLine(), out int slot2Index);
             Console.Write("Slot 2 Stack: ");
@@ -35,27 +34,20 @@ namespace Lab05
             Console.WriteLine($"[Slot1]    Index:{slotIndex} Stack:{slotStack} Max Stack:{slotStackSize}");
             Console.WriteLine($"[Slot2]    Index:{slot2Index} Stack:{slot2Stack} Max Stack:{slot2StackSize}");
 
-            /*
-            int potionHeal = 8;
-            heroHp += potionHeal;
-            Console.WriteLine($"Hero drinks a potion, healing {potionHeal}. Hero HP is now {heroHp}.");
+            int addStack = 5;
+            slotStack += addStack;
+            Console.WriteLine($"Slot add stack {addStack}. Current Slot Stack is {slotStack}.");
 
-            int normalDamage = Math.Max(0, heroAttack - monsterDefense);
-            Console.WriteLine($"Normal Attack would deal: {normalDamage} damage");
-
-            int powerDamage = Math.Max(0, heroAttack * 2 - monsterDefense);
-            Console.WriteLine($"Power Attack would deal: {powerDamage} damage");
-
-            int counterDamage = Math.Max(0, monsterAttack - heroDefense);
-            Console.WriteLine($"If Monster counters afterward, it would deal: {counterDamage} damage");
+            int slotContainerStackSum = Math.Max(0, slotStack + slot2Stack);
+            Console.WriteLine($"Sum of container stack: {slotContainerStackSum}");
+            int slotContainerStackSizeSum = Math.Max(0, slotStackSize + slot2StackSize);
+            Console.WriteLine($"Sum of container stack size: {slotContainerStackSizeSum}");
 
             Random rng = new Random(14);
-            int roll = rng.Next(1, 101);
-            bool isCritical = roll <= 10;
-            int criticalDamage = normalDamage + Convert.ToInt32(isCritical) * normalDamage;
-            Console.WriteLine($"Critical hit roll: {roll} (critical: {isCritical})");
-            Console.WriteLine($"If critical, Normal Attack would instead deal: {criticalDamage} damage");
-            */
+            int roll = rng.Next(1, 11);
+            bool isMerge = roll <= 2;
+            Console.WriteLine($"Roll to merge slot: {roll} (merge: {isMerge})");
+            Console.WriteLine($"If Merge, Slot merge to {slot2Index} index with {slotContainerStackSum} Stack and {slotContainerStackSizeSum} Stack Size");
         }
     }
 }
