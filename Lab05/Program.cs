@@ -16,33 +16,46 @@ namespace Lab05
             Console.WriteLine("          Slot Container        ");
             Console.WriteLine("________________________________");
 
-            Console.Write("Create Slot At Index: ");
-            bool slotIndexValid = int.TryParse(Console.ReadLine(), out var slotIndex);
-            if (!slotIndexValid) { Console.WriteLine("INPUT MISMATCH"); return; }
-            Console.Write("Set Slot Value: ");
-            bool slotValueValid = float.TryParse(Console.ReadLine(), out var slotValue);
-            Console.Write("Set Slot Max Stack Size: ");
-            bool slotStackSizeValid = int.TryParse(Console.ReadLine(), out var slotStackSize);
+            Console.Write("Slot Index: ");
+            bool slotIndexValid = int.TryParse(Console.ReadLine(), out int slotIndex);
+            Console.Write("Slot Stack: ");
+            bool slotStackValid = int.TryParse(Console.ReadLine(), out int slotStack);
+            Console.Write("Slot Stack Size: ");
+            bool slotStackSizeValid = int.TryParse(Console.ReadLine(), out int slotStackSize);
+            Console.Write("Monster HP: ");
+            Console.Write("Slot 2 Index: ");
+            bool slot2IndexValid = int.TryParse(Console.ReadLine(), out int slot2Index);
+            Console.Write("Slot 2 Stack: ");
+            bool slot2StackValid = int.TryParse(Console.ReadLine(), out int slot2Stack);
+            Console.Write("Slot 2 Stack Size: ");
+            bool slot2StackSizeValid = int.TryParse(Console.ReadLine(), out int slot2StackSize);
+            bool allStatsValid = slotIndexValid && slotStackValid && slotStackSizeValid && slot2IndexValid && slot2StackValid && slot2StackSizeValid;
+            Console.WriteLine($"All stats valid: {allStatsValid}");
 
-            bool isVariablesValid = slotStackSizeValid && slotValueValid;
-            if (!isVariablesValid) { Console.WriteLine("INPUT MISMATCH"); return; }
+            Console.WriteLine($"[Slot1]    Index:{slotIndex} Stack:{slotStack} Max Stack:{slotStackSize}");
+            Console.WriteLine($"[Slot2]    Index:{slot2Index} Stack:{slot2Stack} Max Stack:{slot2StackSize}");
 
-            Console.WriteLine();
-            Console.Write("Add Slot Value: ");
-            bool newSlotValueValid = float.TryParse(Console.ReadLine(), out var newSlotValue);
-            if (!newSlotValueValid) { Console.WriteLine("INPUT MISMATCH"); return; }
-            slotValue += newSlotValue;
-            float remainingValue = newSlotValue - (slotStackSize % newSlotValue);
-            slotValue = Math.Clamp(slotValue, 0, slotStackSize);
+            /*
+            int potionHeal = 8;
+            heroHp += potionHeal;
+            Console.WriteLine($"Hero drinks a potion, healing {potionHeal}. Hero HP is now {heroHp}.");
 
-            Console.WriteLine();
-            Console.WriteLine($"Current slot {slotIndex} value is {slotValue}");
-            Console.WriteLine($"remaining {remainingValue} value");
+            int normalDamage = Math.Max(0, heroAttack - monsterDefense);
+            Console.WriteLine($"Normal Attack would deal: {normalDamage} damage");
 
-            Random rnd = new Random();
-            int indexRoll = rnd.Next(0, 10);
-            slotIndex = indexRoll;
-            Console.WriteLine($"Move slot index to {indexRoll}");
+            int powerDamage = Math.Max(0, heroAttack * 2 - monsterDefense);
+            Console.WriteLine($"Power Attack would deal: {powerDamage} damage");
+
+            int counterDamage = Math.Max(0, monsterAttack - heroDefense);
+            Console.WriteLine($"If Monster counters afterward, it would deal: {counterDamage} damage");
+
+            Random rng = new Random(14);
+            int roll = rng.Next(1, 101);
+            bool isCritical = roll <= 10;
+            int criticalDamage = normalDamage + Convert.ToInt32(isCritical) * normalDamage;
+            Console.WriteLine($"Critical hit roll: {roll} (critical: {isCritical})");
+            Console.WriteLine($"If critical, Normal Attack would instead deal: {criticalDamage} damage");
+            */
         }
     }
 }
