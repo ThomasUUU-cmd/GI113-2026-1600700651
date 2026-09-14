@@ -1,0 +1,18 @@
+﻿/*
+* Student ID : 1690700651
+* Name       : Pharit Samranchai
+* Section    : 129A
+* No.        : N/A
+* Course     : GI113 Computer Programming (GI)
+*/
+
+namespace Lab05
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            
+        }
+    }
+}
