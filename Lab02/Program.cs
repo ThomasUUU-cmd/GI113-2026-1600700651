@@ -2,7 +2,7 @@
  * Student ID : 1690700651
  * Name       : Pharit Samranchai
  * Section    : 129A
- * No.        : N/A
+ * No.        : 27
  * Course     : GI113 Computer Programming (GI)
  */
 
